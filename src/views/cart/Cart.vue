@@ -1,24 +1,16 @@
 <!-- 组件说明 -->
 <template>
   <div class=''>
-    <router-view></router-view>
-
-    <main-tab-bar></main-tab-bar>
+    <h2>购物车</h2>
   </div>
 </template>
 
-<style>
-@import "assets/css/base.css";
-
-</style>
-
 <script>
   //import x from ''
-import MainTabBar from 'content/MainTabBar/MainTabBar'
-
   export default {
+    name:'cart',
     components: {
-      MainTabBar,
+
     },
     data () {
       return {
@@ -32,6 +24,4 @@ import MainTabBar from 'content/MainTabBar/MainTabBar'
 
     },
   }
-
-
 </script>
