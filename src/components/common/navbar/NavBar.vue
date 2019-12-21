@@ -18,9 +18,15 @@
   display: flex;
   height: 44px;
   line-height: 44px;
-  box-shadow: 0 1px 1px rgba(100, 100, 100, .1)
+  box-shadow: 0 1px 1px rgba(100, 100, 100, .1);
+}
+.left{
+  width: 60px;
 }
 
+.right{
+  width: 60px;
+}
 .center {
   flex: 1;
   text-align: center;
@@ -30,6 +36,7 @@
 <script>
 //import x from ''
 export default {
+  name:"NavBar",
   components: {},
   data() {
     return {};

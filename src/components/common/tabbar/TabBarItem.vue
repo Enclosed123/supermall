@@ -7,7 +7,7 @@
     <div v-else>
       <slot name="item-icon-active"></slot>
     </div>
-    <div :style="activeStyle">
+    <div :style="activeStyle" class="tab-bar-item-text">
       <slot name="item-text"></slot>
     </div>
   </div>
@@ -17,13 +17,16 @@
 .tab-bar-item {
   flex: 1;
   text-align: center;
-  font-size: 13px;
 }
 .tab-bar-item img {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   margin-top: 3px;
   vertical-align: middle;
+}
+.tab-bar-item-text{
+  font-size: 12px;
+margin-top: 3px;
 }
 </style>
  

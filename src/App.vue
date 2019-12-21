@@ -1,7 +1,9 @@
 <!-- 组件说明 -->
 <template>
   <div class=''>
+    <keep-alive exclude="Detail">
     <router-view></router-view>
+    </keep-alive>
 
     <main-tab-bar></main-tab-bar>
   </div>
