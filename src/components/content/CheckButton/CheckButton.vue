@@ -11,7 +11,6 @@
     border: 1px solid darkgray;
   }
   .check{
-    border: none;
     background-color: red;
     border-radius: 50%;
 
