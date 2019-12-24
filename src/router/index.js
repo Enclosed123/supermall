@@ -15,14 +15,14 @@ const routes = [
     name: 'home',
     component: Home
   },
-  // {
-  //   path: '/category',
-  //   name: 'category',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (category.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "category" */ '../views/category/Category.vue')
-  // },
+  {
+    path: '/category',
+    name: 'category',
+    // route level code-splitting
+    // this generates a separate chunk (category.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "category" */ '../views/category/Category.vue')
+  },
   {
     path:'/cart',
     name:'cart',

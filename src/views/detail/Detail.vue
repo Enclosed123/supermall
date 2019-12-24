@@ -1,5 +1,6 @@
 <!-- 组件说明 -->
 <template>
+
   <div class="detail">
     <detail-nav-bar class="detail-nav-bar" @titleClick="titleClick" ref="nav" :current-index="currentIndex"></detail-nav-bar>
     <scroll class="scroll" ref="scroll" :probe-type="3" @scroll="contentScroll">
@@ -12,9 +13,8 @@
       <goods-list :goods="recommends" ref="recommends"></goods-list>
       <debounce></debounce>
     </scroll>
-    <detail-bottom-bar></detail-bottom-bar>
+    <detail-bottom-bar @addToCart="addToCart"></detail-bottom-bar>
     <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
-
   </div>
 </template>
 
@@ -45,7 +45,6 @@ import DetailGoodsInfo from "./childComps/DetailGoodsInfo";
 import DetailParamInfo from "./childComps/DetailParamInfo";
 import DetailCommentInfo from "./childComps/DetailCommentInfo";
 import DetailBottomBar from './childComps/DetailBottomBar'
-import BackTop from "components/content/backTop/BackTop";
 
 import {
   getDetail,
@@ -59,13 +58,17 @@ import GoodsList from "components/content/goods/GoodsList";
 // 公共组件
 import Scroll from "components/common/scroll/Scroll";
 import { debounce } from "../../common/utils";
-import { itemListenerMixin } from "../../common/mixin";
+import { itemListenerMixin,backTopMixin} from "../../common/mixin";
 export default {
   name: "Detail",
   data() {
     return {
+      // 保存数据
       iid: null,
       topImages: [],
+      title:null,
+      
+      // 
       goods: {},
       shop: {},
       detailInfo: {},
@@ -76,8 +79,6 @@ export default {
       themeTopYs: [],
       getThemeTopY: null,
       currentIndex: 0,
-      isShowBackTop: false,
-
     };
   },
   components: {
@@ -92,7 +93,6 @@ export default {
     Scroll,
     GoodsList,
     debounce,
-    BackTop,
   },
   computed: {},
 
@@ -125,10 +125,21 @@ export default {
       }
       // 3.是否显示回到顶部
       this.isShowBackTop = -position.y > 1000 ? true : false;
-
+    },
+    addToCart(){
+      let product = {};
+      product.topImages = this.topImages[0]
+      product.iid = this.iid
+      product.title = this.goods.title
+      product.desc = this.goods.desc
+      product.lowNowPrice = this.goods.lowNowPrice
+      console.log(product);
+      this.$store.dispatch("addToCart",product)
     }
+    
+
   },
-  mixins: [itemListenerMixin],
+  mixins: [itemListenerMixin,backTopMixin],
   created() {
     // 1. 保存存入的iid
     (this.iid = this.$route.params.iid),

@@ -35,6 +35,7 @@
 
 <script>
 //import x from ''
+
 export default {
   name:"NavBar",
   components: {},

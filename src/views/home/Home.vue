@@ -76,11 +76,10 @@ import { getHomeMultidata, getHomeGoods } from "network/home";
 import TabControl from "components/content/tabControl/TabControl";
 import GoodsList from "components/content/goods/GoodsList";
 import Scroll from "components/common/scroll/Scroll";
-import BackTop from "components/content/backTop/BackTop";
 
 // common部分
 import { debounce } from "../../common/utils";
-import {itemListenerMixin} from '../../common/mixin'
+import {itemListenerMixin, backTopMixin} from '../../common/mixin'
 
 // home子组件
 import HomeSwiper from "./childComps/HomeSwiper";
@@ -97,10 +96,9 @@ export default {
     TabControl,
     GoodsList,
     Scroll,
-    BackTop,
     debounce
   },
-  mixins:[itemListenerMixin],
+  mixins:[itemListenerMixin,backTopMixin],
   created() {
     this.getHomeMultidata();
     this.getHomeGoods("pop");
@@ -129,7 +127,6 @@ export default {
         sell: { page: 1, list: [] }
       },
       currentType: "pop",
-      isShowBackTop: false,
       tabOffsettop: 0,
       isTabFixed: false,
       saveY: 0,
@@ -159,10 +156,6 @@ export default {
       }
       this.$refs.tabControl1.currentIndex = index;
       this.$refs.tabControl2.currentIndex = index;
-    },
-
-    backClick() {
-      this.$refs.scroll.scrollTo(0, 0);
     },
     contentScroll(position) {
       // 1.决定backTop是否显示
