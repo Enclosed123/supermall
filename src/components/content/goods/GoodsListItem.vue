@@ -1,7 +1,7 @@
 <!-- 组件说明 -->
 <template>
   <div class="good-item" @click="itemClick">
-    <img :src="showImage" alt @load="imageLoad" />
+    <img v-lazy="showImage" alt @load="imageLoad" />
     <div class="good-info">
       <p>{{goodsItem.title}}</p>
       <span class="price">{{goodsItem.price}}</span>
