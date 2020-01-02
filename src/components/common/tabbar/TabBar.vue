@@ -11,6 +11,7 @@
   position: fixed;
   left: 0;
   right: 0;
+  /* top: 520px; */
   bottom: 0;
   height: 49px;
   background-color: #f6f6f6;
